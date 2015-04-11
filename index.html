@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+        <title>VERSE: a novel approach to detect virus integration in host
+            genomes through reference genome customization</title>
+
+        <meta name="description" content="VERSE: a novel approach to detect
+        virus integration in host genomes through reference genome
+        customization">
+		<meta name="author" content="Ino de Bruijn">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h3>VERSE: a novel approach to detect virus integration in
+                    host genomes through reference genome customization</h3>
+                    <h4>Wang et al, Genome Medicine (2015)</h4>
+					<p>
+						<small><a href="http://ino.pm">Ino de Bruijn</a> / <a
+                                href="http://twitter.com/inodb">@inodb</a></small>
+					</p>
+				</section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## VirusFinder 1.0 (2013)
+
+                        - detect viruses of any type
+                        - integrated/unintegrated
+                        - detect virus integration sites
+                        - WGS, RNA-Seq, TS
+                    </script>
+				</section>
+                <section>
+					<h3>VirusFinder 1.0 (2013)</h3>
+                    <a href="img/journal.pone.0064465.g001.png">
+                    <img src="img/journal.pone.0064465.g001.png" alt="Virus Finder
+                    pipeline" />
+                    </a>
+				</section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## VERSE aka VirusFinder 2.0 (2015)
+
+                        - Tries to fix
+                            - host genomic instability
+                            - high virus mutation rates
+                        - Host and virus genome customization with ICORN
+                            - (Otto et al, 2010)
+                        - ICORN detects SNPs and indels
+                            - adjust reference iteratively
+                            - increase coverage over each base
+                    </script>
+				</section>
+                <section>
+					<h3>VERSE (2015)</h3>
+                    <a href="img/verse_pipeline.jpg">
+                    <img src="img/verse_pipeline.jpg" alt="VERSE
+                    pipeline" />
+                    </a>
+				</section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## VERSE (2015)
+
+                        - Two classes of predicted integration sites
+                            - high confidence: sufficient soft-clipped reads for
+                            CREST
+                            - low confidence: locus within region predicted by
+                            SVDetect that has most soft-clipped reads
+                                - distance between regions at least 10 bp
+                    </script>
+				</section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Benchmark
+
+                        - WGS of 13 hepatocellular carcinomas (HCC)
+                            - Illumina 2x 90bp
+                            - mean cov 31.7x to 121.2x
+                            - 20 HBV validated integration sites (PCR, Sanger)
+                                - disregard 2 closer than 10 bp
+                        - RNAseq of 4 HCC cell lines
+                            - Illumina 2x 101 bp
+                            - mean 127M reads per sample
+                            - 11 HBV validated chimeric transcripts (Sanger)
+                    </script>
+				</section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Benchmark
+
+                        - TS of 2 Merkel cell carcinomas
+                            - 2x 100 bp
+                            - 3.9M and 5M reads
+                        - Simulated data
+                            - Illumina 2x 75 bp
+                            - mean cov 30x
+                            - mutated HPV-16 + hg19
+                                - SNPs, indels, SVs
+                    </script>
+				</section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Results
+
+                        - Virus genome customization
+                            - Simulated data
+                            - 91% SNPs, 67% indel 1 iteration
+                            - 99.9% identity with concensus HPV-16
+                                - compared to 99.1% reference
+                    </script>
+				</section>
+                <section>
+					<h3>Results</h3>
+                    <h4>Host genome customization</h4>
+                    <a href="img/icorn.jpg">
+                    <img src="img/icorn.jpg" alt="ICORN" />
+                    </a>
+                    <h6>Sample 26T from WGS HCC</h6>
+				</section>
+                <section>
+<h3>Virus integration site detection</h3>
+<table border="0" cellpadding="0" cellspacing="5" id="poparticle" width="100%" cols="5" rules="none" frame="void">
+      <colgroup width="*" style="width:%" align="left"></colgroup>
+      <colgroup width="*" style="width:%"></colgroup>
+      <colgroup width="*" style="width:%"></colgroup>
+      <colgroup width="*" style="width:%"></colgroup>
+      <colgroup width="*" style="width:%"></colgroup>
+         <tr>
+            <td style="border-right: 0pt;" class="rowsep0"><span><strong>Data type</strong></span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span><strong>Known integration sites</strong></span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span><strong>VERSE</strong></span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span><strong>VirusFinder</strong></span></td>
+            <td style="padding-bottom:1em" class="rowsep0"><span><strong>VirusSeq</strong></span></td>
+         </tr>
+      </thead>
+      <tbody align="left">
+         <tr>
+            <td style="border-right: 0pt;" class="rowsep0"><span>WGS</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>20</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>16</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>13</span></td>
+            <td style="padding-bottom:1em" class="rowsep0"><span>-</span></td>
+         </tr>
+         <tr>
+            <td style="border-right: 0pt;" class="rowsep0"><span>RNA-seq</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>11</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>9</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>8</span></td>
+            <td style="padding-bottom:1em" class="rowsep0"><span>7</span></td>
+         </tr>
+         <tr>
+            <td style="border-right: 0pt;" class="rowsep0"><span>TS</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>3</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>3</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>2</span></td>
+            <td style="padding-bottom:1em" class="rowsep0"><span>3</span></td>
+         </tr>
+         <tr>
+            <td style="border-right: 0pt;" class="rowsep0"><span>Total</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>34</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>28&nbsp;(82%)</span></td>
+            <td style="border-right: 0pt;" class="rowsep0"><span>23&nbsp;(68%)</span></td>
+            <td style="padding-bottom:1em" class="rowsep0"><span>-</span></td>
+         </tr>
+      </tbody>
+      <tfoot></tfoot>
+   </table>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## State of the software
+
+                        - Difficult to install
+                            - many dependencies and old versions
+                            - Crashes on test data
+                        - The code is not in an online code repository
+                            - Difficult to propose changes
+                        - Excellent support right here at MSKCC
+                    </script>
+				</section>
+                <section>
+                    <h2>Questions?</h2>
+                    Presentation at<br /><a
+                        href="http://bit.ly/inotalks">bit.ly/inotalks</a>
+                </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+                slideNumber: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
