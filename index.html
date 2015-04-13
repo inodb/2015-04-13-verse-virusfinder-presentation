@@ -55,7 +55,7 @@
                         - detect viruses of any type
                         - integrated/unintegrated
                         - detect virus integration sites
-                        - WGS, RNA-Seq, TS
+                        - WGS, RNA-Seq, TS (paired end reads)
                     </script>
 				</section>
                 <section>
@@ -72,10 +72,11 @@
                         - Tries to fix
                             - host genomic instability
                             - high virus mutation rates
-                        - Host and virus genome customization with ICORN
+                        - Host and virus genome customization with iCORN
                             - (Otto et al, 2010)
-                        - ICORN detects SNPs and indels
-                            - adjust reference iteratively
+                            - Iterative Correction of Reference Nucleotides
+                        - iCORN detects SNPs and indels
+                            - adjust references iteratively
                             - increase coverage over each base
                     </script>
 				</section>
@@ -134,7 +135,7 @@
                         - Virus genome customization
                             - Simulated data
                             - 91% SNPs, 67% indel 1 iteration
-                            - 99.9% identity with concensus HPV-16
+                            - 99.9% identity with consensus HPV-16
                                 - compared to 99.1% reference
                     </script>
 				</section>
@@ -200,11 +201,27 @@
                         ## State of the software
 
                         - Difficult to install
-                            - many dependencies and old versions
-                            - Crashes on test data
+                            - many dependencies are old versions
                         - The code is not in an online code repository
                             - Difficult to propose changes
+                        - After getting help, still a lot of warnings when
+                        running the software on a test set
                         - Excellent support right here at MSKCC
+                    </script>
+				</section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Comments
+
+                        - Host/viral genome customization potential problems
+                        not discussed
+                            - What is theoretical best iCORN can do?
+                        - Viral integration sites
+                            - Are found sites 1 bp resolution?
+                            - Only sensitivity?
+                            - What proportion False Positive and False Negative
+                            - Comparison low confidence high confidence cases
+                        - Only paired end reads, long single would be useful
                     </script>
 				</section>
                 <section>
